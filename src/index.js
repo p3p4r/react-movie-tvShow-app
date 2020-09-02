@@ -1,13 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// redux
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk"; // prevents constantly runing fetch, only on call
+import allReducers from './reducers';
+
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  allReducers,
+  composeEnhancer(applyMiddleware(thunk)),
+);
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

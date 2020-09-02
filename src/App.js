@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import Form from './components/Form';
+import { ThemeProvider, CSSReset, Flex, Grid, Text, Box } from "@chakra-ui/core"
+import { useSelector } from 'react-redux'
+import customTheme from  './theme.js'
+require('dotenv').config()
 
-function App() {
+export default function App({ children }) {
+  const cardInfo = useSelector(state => state.cardVisibility).visibility;
+
   return (
+    <ThemeProvider theme={customTheme}>
+    <CSSReset />
+    {children}
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="v-container">
+        <Grid columns={2} size="100%" align="center" justify="center">
+          {!cardInfo ?
+          <Flex flexDirection="column" justifyContent="flex-end">
+            <Box>
+              <Text
+              textAlign="center"
+              className="title"
+              fontSize= "6rpw"
+              textTransform= "uppercase"
+              fontWeight= "700"
+              textshadow= "0 0 300px #a9a9a9, 0 0 100px #a9a9a95e, 0 0 20px #040404">
+                What to Watch Right Now
+              </Text>
+            </Box>
+          </Flex>
+          : ''}
+          <Box>
+            <Form />
+          </Box>
+      </Grid>
+      </div>
     </div>
-  );
+  </ThemeProvider>
+  )
 }
 
-export default App;
