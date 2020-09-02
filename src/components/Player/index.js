@@ -96,8 +96,8 @@ export class player extends Component {
                     onError={setModalClose}
                     onEnded={setModalClose}
                     onProgress={this.getCurrentTime}
-                    onReady={e => console.log('onReady', e)}
-                    onSeek={e => console.log('onSeek', e)}
+                    onReady={e => console.log('onReady')}
+                    onSeek={e => console.log('onSeek')}
                     /> : 'asd'}
                 { thumbnail ? <div className="full-hw player--thumb"  onClick={this.handlePlay}>
                     <IconContext.Provider value={{  size:'2rem' }} >
