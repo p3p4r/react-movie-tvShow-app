@@ -28,7 +28,7 @@ export class player extends Component {
         movieTrailer( this.props.name ,this.props.showType, {year: this.props.year , multi: true} )
         .then( res => {
             this.setState({url : res})
-            console.log(res)
+            //console.log(res)
         })
         .catch(err => {
             console.log(err)
@@ -51,7 +51,7 @@ export class player extends Component {
     }
 
     isPlayerReady = () => {
-        console.log('ready player..')
+        console.log('The player is ready..')
     }
 
     getCurrentTime = (time) => {

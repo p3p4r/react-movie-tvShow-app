@@ -8,7 +8,6 @@ require('dotenv').config()
 
 export default function App({ children }) {
   const cardInfo = useSelector(state => state.cardVisibility).visibility;
-
   return (
     <ThemeProvider theme={customTheme}>
     <CSSReset />

@@ -28,12 +28,12 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  background: url(/images/bg2.jpg) #000 no-repeat 0 0;
   color: #ffffff;
   -webkit-animation: slideBackground 20s linear infinite;
   -webkit-animation-fill-mode: forwards;
   animation: slideBackground 20s linear infinite;
   animation-fill-mode: forwards;
+  background: #000 no-repeat 0 0;
 }
 
 

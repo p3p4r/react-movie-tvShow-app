@@ -18,6 +18,7 @@ const store = createStore(
   composeEnhancer(applyMiddleware(thunk)),
 );
 
+document.body.style.backgroundImage = `url(${process.env.PUBLIC_URL}/images/bg2.jpg)`;
 
 ReactDOM.render(
   <Provider store={store}>
