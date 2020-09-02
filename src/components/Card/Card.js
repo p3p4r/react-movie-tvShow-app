@@ -20,7 +20,7 @@ import { setPlayerState, randomShowCategory, loadMostPopularShows, getFullInfo }
 export default function Card({ info, showType }) {
   //Cast : https://api.themoviedb.org/3/movie/338762/credits?api_key=c5a0d67cd10acc956b71b44e83cc10af
 
-  const BASE_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original/'
+  const BASE_URL_ORIGINAL = 'https://image.tmdb.org/t/p/w1280/'
   //const BASE_URL_LOGO_SIZE_92 = 'https://image.tmdb.org/t/p/w92/'
   const BASE_URL_LOGO_SIZE_45 = 'https://image.tmdb.org/t/p/w45/'
   // More Sizes on: https://www.themoviedb.org/talk/5a5bf3860e0a260d9d0013c5
