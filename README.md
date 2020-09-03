@@ -1,4 +1,4 @@
-# WHAT TO WHATCH - Movies & TB Shows
+# WHAT TO WHATCH - Movies & TV Shows
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/p3p4r/react-movie-tvshow-app/blob/master/LICENSE)
 
 WHAT TO WHATCH  is a responsive [ReactJS](http://facebook.github.io/react/index.html) app that give you one random movie or tv show from the most popular, you have access to basic information such as title, rating,..., and the trailer. Tha data is loading via [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api).
@@ -6,14 +6,14 @@ WHAT TO WHATCH  is a responsive [ReactJS](http://facebook.github.io/react/index.
 ![](https://github.com/p3p4r/react-movie-tvshow-app/blob/master/WhatToWatch.gif)
 
 ## DEMO LIVE
-[WHAT TO WHATCH - Movies & TB Shows - Live](https://p3p4r.github.io/react-movie-tvshow-app/)
+[WHAT TO WHATCH - Movies & TV Shows - Live](https://p3p4r.github.io/react-movie-tvshow-app/)
 
 ## Table of Contents
 
 * [How to Use the App](#how-to-use-the-app)
 * [Installation](#installation)
 * [Tools](#tools)
-* [Browser Support](#brwser-support)
+* [Browser Support](#browser-support)
 
 ## How to Use the App
 
