@@ -1,68 +1,56 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WHAT TO WHATCH - Movies & TB Shows
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/p3p4r/react-movie-tvshow-app/blob/master/LICENSE)
 
-## Available Scripts
+HAT TO WHATCH  is a responsive [ReactJS](http://facebook.github.io/react/index.html) app that utilises Twitter's [typeahead.js](https://twitter.github.io/typeahead.js/) and [Bloodhound](https://github.com/twitter/typeahead.js/blob/master/doc/bloodhound.md) suggestion engine, loading data via [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api).
 
-In the project directory, you can run:
+![](https://github.com/p3p4r/react-movie-tvshow-app/blob/master/WhatToWatch.gif)
 
-### `npm start`
+## DEMO LIVE
+[TMDb Movie Search - Live](https://p3p4r.github.io/react-movie-tvshow-app/)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* [How to Use the App](#howtouseeapp)
+* [Installation](#installation)
+* [Tools](#tools)
+* [Browser Support](#brwser-support)
+* [How to Tools the App](#tools)
 
-### `npm test`
+## How to Use the App
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Click the 'Show me' Button it will give you a random show 
+- Check the trailer in the play button
+- If you want to generate again, just click on 'Generate'
+- Enjoy it!
 
-### `npm run build`
+## Installation
+ Is required [node.js](http://nodejs.org/download/) to get ``npm``.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/p3p4r/react-movie-tvshow-app.git
+npm install
+npm start
+```
+If you do not automatically open the application, openbrowser at: `http://localhost:3000`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Tools
+Key tools used in this ReactJS project are:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [ReactJS](http://facebook.github.io/react/index.html)
+* [Node.js](https://nodejs.org/en/)
+* [Material-UI](https://material-ui.com/)
+* [Chkra UI](https://chakra-ui.com/)
 
-### `npm run eject`
+## Browser Support
+This project makes usage of the Fetch API, utilising a polyfill for older browsers.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Chrome 42+
+- Firefox 39+
+- Safari 10+
+- Internet Explorer 11+ 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Author
+[P3P4R](https://folio.fyke.pt/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+[MIT](https://github.com/p3p4r/react-movie-tvshow-app/blob/master/LICENSE)
