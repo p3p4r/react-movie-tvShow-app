@@ -18,7 +18,7 @@ export class player extends Component {
 
     state = {
 
-        loading: true,
+        loading: false,
         url: null,
         thumbnail: false,
         playing: true,
@@ -28,7 +28,6 @@ export class player extends Component {
         movieTrailer( this.props.name ,this.props.showType, {year: this.props.year , multi: true} )
         .then( res => {
             this.setState({url : res})
-            //console.log(res)
         })
         .catch(err => {
             console.log(err)
@@ -38,16 +37,20 @@ export class player extends Component {
     }
 
     handlePause = () => {
-        this.setState({ thumbnail: true})
-        this.setState({ playing: false})
-        this.setState({ seekTime: this.getCurrentTime})
+        this.setState({
+            thumbnail: true,
+            playing: false,
+            seekTime: this.getCurrentTime
+        })
     }
 
     handlePlay = () => {
-        this.setState({ thumbnail: false})
-        this.setState({ loading: false })
-        this.setState({ seekTime: this.getCurrentTime})
-        this.setState({ playing: true})
+        this.setState({
+            thumbnail: false,
+            loading: false,
+            seekTime: this.getCurrentTime,
+            playing: true
+        })
     }
 
     isPlayerReady = () => {
@@ -98,7 +101,7 @@ export class player extends Component {
                     onProgress={this.getCurrentTime}
                     onReady={e => console.log('onReady')}
                     onSeek={e => console.log('onSeek')}
-                    /> : 'asd'}
+                    /> : ''}
                 { thumbnail ? <div className="full-hw player--thumb"  onClick={this.handlePlay}>
                     <IconContext.Provider value={{  size:'2rem' }} >
                         <PlayArrowIcon/>
