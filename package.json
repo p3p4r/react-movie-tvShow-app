@@ -2,7 +2,7 @@
   "name": "react_api",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://p3p4r.github.io/react-movie-tvShow-app/",
+  "homepage": "https://p3p4r.github.io/react-movie-tvshow-app/",
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/theme": "^1.0.0-rc.2",
