@@ -6,6 +6,8 @@ import ReadMoreAndLess from 'react-read-more-less';
 import { makeStyles } from '@material-ui/core/styles';
 import {  Container,  Grid, } from '@material-ui/core';
 import Player from '../Player'
+import movieTrailer from 'movie-trailer'
+
 import './Card.css'
 import ProductionCompanies from './ProductionCompanies'
 import Loading from '../Loading'
@@ -32,12 +34,27 @@ export default function Card({ info, showType }) {
   const fullInfoShow = useSelector(state => state.fullInfoShow.data)
   const InfoShowData = useSelector(state => state.fullInfoShow.data.data)
   const [inf, setInfo] = useState(InfoShowData);
+  const [url, setUrl] = useState(null);
 
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
       setShow(fullInfoShow.show)
       setInfo(fullInfoShow.data)
-    }, [fullInfoShow.show,fullInfoShow.data]);
+
+      let title = fullInfoShow.data.original_name ? fullInfoShow.data.original_name : fullInfoShow.data.original_title;
+      let year = fullInfoShow.data.release_date ? fullInfoShow.data.release_date.split('-')[0] : fullInfoShow.data.first_air_date.split('-')[0];
+
+      console.log(fullInfoShow.data)
+      console.log(title)
+      console.log(year)
+      movieTrailer( title , fullInfoShow.show, {year:  year , multi: true} )
+        .then( res => {
+            setUrl(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [ fullInfoShow.show,fullInfoShow.data]);
 
   const name = "Generate";
   const useStyles = makeStyles((theme) => ({
@@ -90,6 +107,7 @@ export default function Card({ info, showType }) {
       loadMostPopularShows(showType.name)
       const showList =  dispatch( loadMostPopularShows(showType.name) )
       dispatch( getFullInfo(showList.payload,showType.name) )
+
     }catch (err) {
       console.error("Something went wrong:", err);
    }
@@ -134,14 +152,14 @@ export default function Card({ info, showType }) {
             </Box>
           </Grid>
 
-          <Grid item lg={6} sm={6} xs={12} className="player">
+          {url ? <Grid item lg={6} sm={6} xs={12} className="player">
             <IconButton aria-label="play/pause"  type="button" onClick={() => handleOpen()}>
                   <PlayArrowIcon className={classes.playIcon} />
             </IconButton>
-          </Grid>
+          </Grid> : ''}
 
         </Grid>
-        { playerStatus.status ? <Player name={title} year={year} showType={show} thumbnail={BASE_URL_ORIGINAL+inf.backdrop_path}/> : ''}
+        { playerStatus.status ? <Player url={url} name={title} year={year} showType={show} thumbnail={BASE_URL_ORIGINAL+inf.backdrop_path}/> : ''}
     </Grid>
   </>
   )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactPlayer from 'react-player'
-import movieTrailer from 'movie-trailer'
 import Loading from '../Loading'
 import {IconContext} from "react-icons";
 import { FaTimes } from 'react-icons/fa'
@@ -17,24 +16,12 @@ export class player extends Component {
       }
 
     state = {
-
         loading: false,
-        url: null,
         thumbnail: false,
         playing: true,
         seekTime: 0,
     }
-    componentDidMount(){
-        movieTrailer( this.props.name ,this.props.showType, {year: this.props.year , multi: true} )
-        .then( res => {
-            this.setState({url : res})
-        })
-        .catch(err => {
-            console.log(err)
-            this.setState({loading : false})
-            this.props.setPlayerState(this.props.videoPlayer.status)
-        })
-    }
+    componentDidMount(){}
 
     handlePause = () => {
         this.setState({
@@ -67,7 +54,7 @@ export class player extends Component {
 
     render() {
         const {setPlayerState, videoPlayer}  = this.props;
-        const { url, loading, playing, thumbnail } = this.state;
+        const { loading, playing, thumbnail } = this.state;
 
         const setModalClose = () => {
            setPlayerState(videoPlayer.status)
@@ -82,9 +69,9 @@ export class player extends Component {
                 </button>
 
                 {loading ? <Loading /> : ''}
-                {url !== null ? <ReactPlayer
+                {this.props.url !== null ? <ReactPlayer
                     ref={this.ref}
-                    url={url[0]}
+                    url={this.props.url}
                     config={{
                         youtube: {
                             playerVars: { showinfo: 0, rel: 1, disablekb: 1, modestbranding: 1, iv_load_policy:0 }
