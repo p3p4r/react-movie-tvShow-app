@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-movie-tvShow-app/static/css/main.bb5baae9.chunk.css",
+    "main.js": "/react-movie-tvShow-app/static/js/main.c74bfe67.chunk.js",
+    "main.js.map": "/react-movie-tvShow-app/static/js/main.c74bfe67.chunk.js.map",
+    "runtime-main.js": "/react-movie-tvShow-app/static/js/runtime-main.e8ad5ecc.js",
+    "runtime-main.js.map": "/react-movie-tvShow-app/static/js/runtime-main.e8ad5ecc.js.map",
+    "static/js/2.923dcf1a.chunk.js": "/react-movie-tvShow-app/static/js/2.923dcf1a.chunk.js",
+    "static/js/2.923dcf1a.chunk.js.map": "/react-movie-tvShow-app/static/js/2.923dcf1a.chunk.js.map",
+    "index.html": "/react-movie-tvShow-app/index.html",
+    "precache-manifest.63e11df857f317d82bd6b59908ffbd7b.js": "/react-movie-tvShow-app/precache-manifest.63e11df857f317d82bd6b59908ffbd7b.js",
+    "service-worker.js": "/react-movie-tvShow-app/service-worker.js",
+    "static/css/main.bb5baae9.chunk.css.map": "/react-movie-tvShow-app/static/css/main.bb5baae9.chunk.css.map",
+    "static/js/2.923dcf1a.chunk.js.LICENSE.txt": "/react-movie-tvShow-app/static/js/2.923dcf1a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e8ad5ecc.js",
+    "static/js/2.923dcf1a.chunk.js",
+    "static/css/main.bb5baae9.chunk.css",
+    "static/js/main.c74bfe67.chunk.js"
+  ]
+}
