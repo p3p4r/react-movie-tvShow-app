@@ -24,7 +24,10 @@ WHAT TO WHATCH is a responsive [ReactJS](http://facebook.github.io/react/index.h
 - Enjoy it!
 
 ## Installation
- Is required [node.js](http://nodejs.org/download/) to get ``npm``.
+ Is required:
+ - [node.js](http://nodejs.org/download/) to get ``npm``
+ - [Themoviedb API Key](https://api.themoviedb.org)
+ - [Youtube v3 API key](https://console.developers.google.com/apis/credentials), for the dependency "youtube-search"
 
 ```bash
 git clone https://github.com/p3p4r/react-movie-tvshow-app.git
