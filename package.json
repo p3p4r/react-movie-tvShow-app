@@ -30,7 +30,8 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1",
-    "ytsr": "^3.5.3"
+    "youtube-search": "^1.1.6",
+    "youtubei": "0.0.1-rc.22"
   },
   "scripts": {
     "predeploy": "npm run build",

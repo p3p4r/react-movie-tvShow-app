@@ -62,6 +62,7 @@ export class player extends Component {
 
         return (
             <div className="player--container" style={{position:'absolute',top:'0',left:'0',zIndex:'9',background: '#00000096',width:'100vw', height:'100vh'}}>
+                <h1 style={{position: 'absolute', left: '10%', zIndex: 9, fontSize: '1.5rem', lineHeight: '87px'}}>{this.props.data.title}</h1>
                 <button type="button" onClick={setModalClose} style={{position:'absolute', top:'3%', right: '3%',zIndex:'9'}} >
                     <IconContext.Provider value={{  size:'2rem' }}>
                         <FaTimes/>
@@ -69,9 +70,9 @@ export class player extends Component {
                 </button>
 
                 {loading ? <Loading /> : ''}
-                {this.props.url !== null ? <ReactPlayer
+                {this.props.data.link !== null ? <ReactPlayer
                     ref={this.ref}
-                    url={this.props.url}
+                    url={this.props.data.link}
                     config={{
                         youtube: {
                             playerVars: { showinfo: 0, rel: 1, disablekb: 1, modestbranding: 1, iv_load_policy:0 }

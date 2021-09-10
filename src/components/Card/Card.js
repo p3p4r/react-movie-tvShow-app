@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {  Container,  Grid, } from '@material-ui/core';
 import Player from '../Player'
 
-import ytsr from 'ytsr'
+import search from 'youtube-search'
 
 import './Card.css'
 import ProductionCompanies from './ProductionCompanies'
@@ -21,12 +21,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setPlayerState, randomShowCategory, loadMostPopularShows, getFullInfo } from '../../actions'
 
 export default function Card({ info, showType }) {
-  //Cast : https://api.themoviedb.org/3/movie/338762/credits?api_key=<API_KEY>
-
   const BASE_URL_ORIGINAL = 'https://image.tmdb.org/t/p/w1280/'
-  //const BASE_URL_LOGO_SIZE_92 = 'https://image.tmdb.org/t/p/w92/'
   const BASE_URL_LOGO_SIZE_45 = 'https://image.tmdb.org/t/p/w45/'
-  // More Sizes on: https://www.themoviedb.org/talk/5a5bf3860e0a260d9d0013c5
 
   const [show, setShow] = useState(showType.name);
   const dispatch = useDispatch();
@@ -35,40 +31,36 @@ export default function Card({ info, showType }) {
   const fullInfoShow = useSelector(state => state.fullInfoShow.data)
   const InfoShowData = useSelector(state => state.fullInfoShow.data.data)
   const [inf, setInfo] = useState(InfoShowData);
-  const [url, setUrl] = useState(null);
-
+  const [trailerData,setTrailerData] = useState(null);
+  const youtube_key = process.env.REACT_APP_YOUTUBE_KEY
 
   const getTrailerInfo = async () => {
     let title = fullInfoShow.data.original_name ? fullInfoShow.data.original_name : fullInfoShow.data.original_title;
     let year = fullInfoShow.data.release_date ? fullInfoShow.data.release_date.split('-')[0] : fullInfoShow.data.first_air_date.split('-')[0];
 
-
     let searchString = title + " " + fullInfoShow.show + " Trailer";
-    const filters1 = await ytsr.getFilters(searchString);
-    const filter1 = filters1.get('Type').get('Video');
-    const options = {
-      pages: 1,
-    }
-    const searchResults = await ytsr(filter1.url, options);
-    const result = searchResults.items[0].url;
-    console.log(result)
-    setUrl(result)
+    var opts = {
+      maxResults: 1,
+      key: youtube_key
+    };
+
+    search(searchString, opts, function(err, results) {
+      if(err) return console.log(err);
+
+      console.log(results)
+      setTrailerData(results[0])
+    });
 };
 
 
-    // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
       setShow(fullInfoShow.show)
       setInfo(fullInfoShow.data)
-
       getTrailerInfo();
-
-
-    }, [getTrailerInfo, fullInfoShow.show, fullInfoShow.data]);
+    }, [fullInfoShow.show, fullInfoShow.data]);
 
   const name = "Generate";
   const useStyles = makeStyles((theme) => ({
-    /*  background: `url(${BASE_URL_ORIGINAL+inf.backdrop_path}), url(${inf.posters.posters[1].link}) #000 no-repeat `, */
       mainContainer:{
         background: `url(${BASE_URL_ORIGINAL+inf.backdrop_path}) #000 no-repeat `,
         backgroundSize: 'cover',
@@ -101,7 +93,7 @@ export default function Card({ info, showType }) {
       dispatch(setPlayerState(!playerStatus));
     }
 
-/* https://chakra-ui.com/simplegrid*/
+
   const listGenres = inf.genres.map((genre,index) =>
     <React.Fragment key={genre.id}>{genre.name} {index !== inf.genres.length-1 ? ',' : ''} </React.Fragment>
   );
@@ -122,8 +114,6 @@ export default function Card({ info, showType }) {
       console.error("Something went wrong:", err);
    }
   }
-
-
 
   return (
     <>
@@ -162,14 +152,14 @@ export default function Card({ info, showType }) {
             </Box>
           </Grid>
 
-          {url ? <Grid item lg={6} sm={6} xs={12} className="player">
+          {trailerData ? <Grid item lg={6} sm={6} xs={12} className="player">
             <IconButton aria-label="play/pause"  type="button" onClick={() => handleOpen()}>
                   <PlayArrowIcon className={classes.playIcon} />
             </IconButton>
           </Grid> : ''}
 
         </Grid>
-        { playerStatus.status ? <Player url={url} name={title} year={year} showType={show} thumbnail={BASE_URL_ORIGINAL+inf.backdrop_path}/> : ''}
+        { playerStatus.status ? <Player data={trailerData} thumbnail={BASE_URL_ORIGINAL+inf.backdrop_path}/> : ''}
     </Grid>
   </>
   )
