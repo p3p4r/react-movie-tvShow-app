@@ -6,7 +6,8 @@ import ReadMoreAndLess from 'react-read-more-less';
 import { makeStyles } from '@material-ui/core/styles';
 import {  Container,  Grid, } from '@material-ui/core';
 import Player from '../Player'
-import movieTrailer from 'movie-trailer'
+
+import ytsr from 'ytsr'
 
 import './Card.css'
 import ProductionCompanies from './ProductionCompanies'
@@ -36,25 +37,34 @@ export default function Card({ info, showType }) {
   const [inf, setInfo] = useState(InfoShowData);
   const [url, setUrl] = useState(null);
 
+
+  const getTrailerInfo = async () => {
+    let title = fullInfoShow.data.original_name ? fullInfoShow.data.original_name : fullInfoShow.data.original_title;
+    let year = fullInfoShow.data.release_date ? fullInfoShow.data.release_date.split('-')[0] : fullInfoShow.data.first_air_date.split('-')[0];
+
+
+    let searchString = title + " " + fullInfoShow.show + " Trailer";
+    const filters1 = await ytsr.getFilters(searchString);
+    const filter1 = filters1.get('Type').get('Video');
+    const options = {
+      pages: 1,
+    }
+    const searchResults = await ytsr(filter1.url, options);
+    const result = searchResults.items[0].url;
+    console.log(result)
+    setUrl(result)
+};
+
+
     // Similar to componentDidMount and componentDidUpdate:
     useEffect(() => {
       setShow(fullInfoShow.show)
       setInfo(fullInfoShow.data)
 
-      let title = fullInfoShow.data.original_name ? fullInfoShow.data.original_name : fullInfoShow.data.original_title;
-      let year = fullInfoShow.data.release_date ? fullInfoShow.data.release_date.split('-')[0] : fullInfoShow.data.first_air_date.split('-')[0];
+      getTrailerInfo();
 
-      console.log(fullInfoShow.data)
-      console.log(title)
-      console.log(year)
-      movieTrailer( title , fullInfoShow.show, {year:  year , multi: true} )
-        .then( res => {
-            setUrl(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }, [ fullInfoShow.show,fullInfoShow.data]);
+
+    }, [getTrailerInfo, fullInfoShow.show, fullInfoShow.data]);
 
   const name = "Generate";
   const useStyles = makeStyles((theme) => ({
