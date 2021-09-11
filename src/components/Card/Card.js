@@ -47,7 +47,6 @@ export default function Card({ info, showType }) {
     search(searchString, opts, function(err, results) {
       if(err) return console.log(err);
 
-      console.log(results)
       setTrailerData(results[0])
     });
 };
